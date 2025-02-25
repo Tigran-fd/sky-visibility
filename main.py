@@ -8,7 +8,6 @@ from typing import List
 class InvalidResolution(Exception):
     pass
 
-
 def initialize_healpix(resolution: int) -> HEALPix:
     return HEALPix(nside=resolution, order="nested")
 
@@ -43,8 +42,8 @@ def lookup_location(longitude: float,
     except Exception as e:
         return f"Error: {e}"
 
+def get_visible_sky() -> None:
 
-if __name__ == "__main__":
     resolution = int(input("Enter resolution (must be a power of 2): "))
     if not log2(resolution).is_integer():
         raise InvalidResolution("Resolution must be a power of 2!")
@@ -65,3 +64,7 @@ if __name__ == "__main__":
     print(f"Solid angle (field of view): {solid_angle}")
     print(f"Cone angle (angular width): {cone_angle}")
     print(f"Surface area: {area}")
+
+
+if __name__ == "__main__":
+    get_visible_sky()
